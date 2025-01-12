@@ -99,7 +99,7 @@ class GameStartup extends HTMLElement {
                 </div>
                 <div class="contenedor-game intro-juego">
                     <!-- <img src="https://media.tenor.com/3E4p3EslD1kAAAAi/terraria-sticker.gif" width="100" height="100" /> -->
-                    <img src="/assets/imgs/fantasmita.gif" width="100" height="100" />
+                    <img src="/assets/imgs/fantasmita.gif" width="150" height="150" />
                 </div>
             </div>
         </template>
