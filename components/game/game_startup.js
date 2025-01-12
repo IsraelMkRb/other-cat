@@ -5,7 +5,7 @@ class GameStartup extends HTMLElement {
     this.render();
   }
 
-  render = () => {
+  render() {
     const shadow = this.attachShadow({ mode: "open" });
 
     const contenedorTemporal = document.createElement("div");
@@ -20,7 +20,7 @@ class GameStartup extends HTMLElement {
       .addEventListener("click", this.handleClickRegresar);
   };
 
-  html = () => {
+  html() {
     return `
         <template id='game-startup'>
         <style>
@@ -85,6 +85,11 @@ class GameStartup extends HTMLElement {
                     background-color: rgb(81, 53, 97);
                     color: white;
                 }
+            
+                .contenedor-btn-regresar > svg:active {
+                    background-color: rgb(27, 26, 49);
+                    transform: scale(0.9);
+                }
         </style>
             <div class='fondo-game'>
                 <div class="contenedor-btn-regresar">
@@ -93,14 +98,15 @@ class GameStartup extends HTMLElement {
                     </svg>
                 </div>
                 <div class="contenedor-game intro-juego">
-                    <img src="https://media.tenor.com/3E4p3EslD1kAAAAi/terraria-sticker.gif" width="100" height="100" />
+                    <!-- <img src="https://media.tenor.com/3E4p3EslD1kAAAAi/terraria-sticker.gif" width="100" height="100" /> -->
+                    <img src="/assets/imgs/fantasmita.gif" width="100" height="100" />
                 </div>
             </div>
         </template>
     `;
   };
 
-  handleClickRegresar = () => {
+  handleClickRegresar () {
     window.location.href = "/";
   };
 }

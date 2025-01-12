@@ -9,3 +9,7 @@ main#root {
     height: 100vh;
     background: #19171a;
 }
+
+.soundtrack {
+    display: none;
+}

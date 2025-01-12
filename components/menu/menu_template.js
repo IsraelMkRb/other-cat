@@ -110,8 +110,14 @@ class MenuTemplate extends HTMLElement {
                     transform: scale(0.9);
                 }
 
-                .menu-gif {
-                    margin-left: 5rem;
+                .contenedor-imagen {
+                    width: 80%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    margin: auto;
+                    margin-top: 2rem;
                 }
             </style>
             
@@ -125,7 +131,12 @@ class MenuTemplate extends HTMLElement {
                         </div>
                     </div>
 
-                    <image class="menu-gif" src="https://i.pinimg.com/originals/10/27/f8/1027f80aeabcbb74a2e698be71829e9e.gif" width="150" height="150" />
+                    <div class="contenedor-imagen">
+                        <img-tache width='50' height='50'></img-tache>
+                        <img-circulo width='60' height='60'></img-circulo>
+                        <img-tache width='50' height='50'></img-tache>
+                        <img-circulo width='60' height='60'></img-circulo>
+                    </div>
                 </div>
             </div>
         </template>
