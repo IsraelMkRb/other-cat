@@ -2,6 +2,7 @@ import './router.js';
 import './components/menu/menu_template.js';
 import './components/game/game_startup.js';
 import './components/general/tache_circulo_img.js';
+import './components/game/game.js';
 
 import { rutas } from './router.js';
 

@@ -18,6 +18,11 @@ class GameStartup extends HTMLElement {
     shadow
       .querySelector("#btn-regresar")
       .addEventListener("click", this.handleClickRegresar);
+
+    setTimeout(() => {
+        shadow.querySelector("#icono-cargando").style.display = 'none';
+        shadow.querySelector(".juego").style.display = 'block';
+    }, 5000);
   };
 
   html() {
@@ -54,24 +59,6 @@ class GameStartup extends HTMLElement {
                 align-items: center;
             }
 
-            .intro-juego {
-                animation: intro-juego 0.4s ease-in-out;
-            }
-
-            @keyframes intro-juego {
-                0% {
-                    transform: scale(0.1);
-                }
-
-                90% {
-                    transform: scale(1.2);
-                }
-
-                100% {
-                    transform: scale(1);
-                }
-            }
-
             .contenedor-btn-regresar {
                 width: 80%;
             }
@@ -90,6 +77,16 @@ class GameStartup extends HTMLElement {
                     background-color: rgb(27, 26, 49);
                     transform: scale(0.9);
                 }
+            
+            .juego {
+                display: none;
+                width: 80%;
+                height: 80%;
+                text-shadow: none;
+                color: white;
+                border: solid 1px white;
+                
+            }
         </style>
             <div class='fondo-game'>
                 <div class="contenedor-btn-regresar">
@@ -97,9 +94,9 @@ class GameStartup extends HTMLElement {
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4-4m-4 4 4 4"/>
                     </svg>
                 </div>
-                <div class="contenedor-game intro-juego">
-                    <!-- <img src="https://media.tenor.com/3E4p3EslD1kAAAAi/terraria-sticker.gif" width="100" height="100" /> -->
-                    <img src="/assets/imgs/fantasmita.gif" width="150" height="150" />
+                <div class="contenedor-game">
+                    <img id="icono-cargando" src="/assets/imgs/fantasmita.gif" width="150" height="150" />
+                    <x-game class="juego"></x-game>
                 </div>
             </div>
         </template>
