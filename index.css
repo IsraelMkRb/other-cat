@@ -3,8 +3,9 @@
     margin: 0;
 }
 
+
 main#root {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(rgb(23, 20, 51), black);
+    background: #19171a;
 }
