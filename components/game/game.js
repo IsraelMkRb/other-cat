@@ -75,24 +75,32 @@ class Game extends HTMLElement {
         const jugadorActual = this.parentNode.parentNode.querySelector(
           ".contenedor-btn-regresar h2"
         );
-
-        const estiloBefore = getComputedStyle(jugadorActual, '::before');
+        const estiloBefore = getComputedStyle(jugadorActual, "::before");
         const textoJugador = estiloBefore.content.toString();
-        console.log(textoJugador)
-        if (textoJugador == '"player 1"') {
+
+        if (textoJugador.toLowerCase() == '"game over"') {
+          alert("Juego terminado. Ya no quedan mas acciones");
+          return;
+        }
+
+        if (textoJugador.toLowerCase() == '"player 1"') {
           e.target.innerHTML =
-            '<img-tache width="60%" height="60%"></img-tache>';
+            '<img-tache width="40%" height="40%"></img-tache>';
         } else {
           e.target.innerHTML =
-            '<img-circulo width="70%" height="70%"></img-circulo>';
+            '<img-circulo width="40%" height="40%"></img-circulo>';
         }
 
         this.casillasVacias--;
 
-        if(this.casillasVacias > 0){
+        if (this.casillasVacias > 0) {
           jugadorActual.classList.toggle("segundo-jugador");
-        }else{
-          jugadorActual.classList.toggle("juego-terminado");
+        } else {
+          jugadorActual.classList.toggle("juego-terminado");       
+          jugadorActual.nextSibling.nextSibling.classList.toggle("oculto"); // Icono de restart
+          jugadorActual.nextSibling.nextSibling.addEventListener('click',() => {
+            window.location.reload();
+          });
         }
       });
     });

@@ -105,6 +105,16 @@ class GameStartup extends HTMLElement {
           font-weight: 600;
           font-style: normal;
         }
+
+        .contenedor-titulo {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .contenedor-titulo img.oculto{
+          display: none;
+        }
         </style>
     `;
   }
@@ -119,7 +129,10 @@ class GameStartup extends HTMLElement {
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4-4m-4 4 4 4"/>
                     </svg>
 
-                    <h2 class="pixelify-sans-600"></h2>
+                    <div class="contenedor-titulo">
+                      <h2 class="pixelify-sans-600"></h2>
+                      <img src="/assets/imgs/new_game.png" class="oculto" width="40" height="40"/>
+                    </div>
                 </div>
                 <div class="contenedor-game">
                     ${
