@@ -5,26 +5,19 @@ class MenuTemplate extends HTMLElement {
     this.render();
   }
 
-  render = () => {
-    const shadow = this.attachShadow({ mode: "open" });
+  handleClick() {
+    window.location.href = "/game";
+  }
 
-    const contenedorTemporal = document.createElement("div");
-    contenedorTemporal.innerHTML = this.html();
-
-    const template = contenedorTemporal.querySelector("#game-menu");
-
-    shadow.appendChild(template.content.cloneNode(true));
-
-    this._handleClick = this.handleClick.bind(this);
-    shadow
+  disconnectedCallback() {
+    this.shadowRoot
       .querySelector("#nuevo-juego")
-      .addEventListener("click", this.handleClick);
-  };
+      .removeEventListener("click", this.handleClick);
+  }
 
-  html = () => {
+  style() {
     return `
-            <template id="game-menu">
-            <style>
+        <style>
                 .fondo-menu {
                     width: 100vw;
                     height: 100vh;
@@ -119,12 +112,25 @@ class MenuTemplate extends HTMLElement {
                     margin: auto;
                     margin-top: 2rem;
                 }
+
+                .pixelify-sans-600 {
+                    font-family: "Pixelify Sans", serif;
+                    font-optical-sizing: auto;
+                    font-weight: 700;
+                    font-style: normal;
+                }
             </style>
-            
+    `;
+  }
+
+  html() {
+    return `
+            <template id="game-menu">           
+            ${this.style()}
             <div class="fondo-menu">
                 <div class="contenedor-menu intro-menu">
                     <div class="titulo-menu">
-                        <h2 class="">¡Bienvenido!</h2>
+                        <h2 class="pixelify-sans-600">¡Bienvenido!</h2>
                         
                         <div id="nuevo-juego" class="opcion-menu menu-palpitacion">
                             Nueva partida
@@ -141,17 +147,23 @@ class MenuTemplate extends HTMLElement {
             </div>
         </template>
         `;
-  };
+  }
 
-  handleClick = () => {
-    window.location.href = "/game";
-  };
+  render() {
+    const shadow = this.attachShadow({ mode: "open" });
 
-  disconnectedCallback = () => {
-    this.shadowRoot
+    const contenedorTemporal = document.createElement("div");
+    contenedorTemporal.innerHTML = this.html();
+
+    const template = contenedorTemporal.querySelector("#game-menu");
+
+    shadow.appendChild(template.content.cloneNode(true));
+
+    this._handleClick = this.handleClick.bind(this);
+    shadow
       .querySelector("#nuevo-juego")
-      .removeEventListener("click", this.handleClick);
-  };
+      .addEventListener("click", this.handleClick);
+  }
 }
 
 customElements.define("game-menu", MenuTemplate);
